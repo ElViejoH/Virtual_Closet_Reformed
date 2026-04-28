@@ -1,0 +1,23 @@
+# ─── Configuración general del proyecto ──────────────────────────────────────
+
+# Ruta al dataset DeepFashion descargado
+data_root: "data/raw"
+
+# Número de categorías en DeepFashion Category Benchmark
+num_classes: 50
+
+# ─── DataLoader ───────────────────────────────────────────────────────────────
+batch_size: 64
+num_workers: 4        # Reduce a 0 si hay errores en Windows
+
+# ─── Fase 1: Solo clasificador (backbone congelado) ───────────────────────────
+phase1_epochs: 5
+phase1_lr: 0.001      # Adam
+
+# ─── Fase 2: Fine-tuning de layer3, layer4 y fc ──────────────────────────────
+phase2_epochs: 20
+phase2_lr: 0.0001     # SGD con momentum
+
+# ─── Checkpoints y logs ───────────────────────────────────────────────────────
+checkpoint_dir: "checkpoints/"
+log_dir: "logs/"

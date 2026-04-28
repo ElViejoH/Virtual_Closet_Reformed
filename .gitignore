@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.venv/
+
+# Datos (no versionar el dataset)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Pesos y checkpoints
+checkpoints/*
+!checkpoints/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+runs/
+
+# VSCode
+.vscode/settings.json
+
+# Misc
+*.egg-info/
+dist/
+build/
+.DS_Store

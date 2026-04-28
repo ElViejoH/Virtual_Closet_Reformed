@@ -1,0 +1,2 @@
+*.pth filter=lfs diff=lfs merge=lfs -text
+exports/base_model/fashion_detector_base.ts filter=lfs diff=lfs merge=lfs -text

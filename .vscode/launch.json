@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Train — Fase 1 y 2",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/train.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Evaluate — Test set",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/evaluate.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Predict — Imagen",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/predict.py",
+      "args": ["--image", "ruta/a/imagen.jpg", "--topk", "5"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Dataset smoke test",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/dataset.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
