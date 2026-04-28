@@ -1,10 +1,10 @@
-# 👗 Fashion Detector — ResNet50 + DeepFashion
+# Fashion Detector — ResNet50 + DeepFashion
 
 Clasificación de prendas de moda usando ResNet50 con fine-tuning sobre el dataset **DeepFashion** (Category and Attribute Prediction Benchmark).
 
 ---
 
-## 📁 Estructura
+## Estructura
 
 ```
 fashion-detector/
@@ -24,7 +24,7 @@ fashion-detector/
 
 ---
 
-## ⚙️ Instalación
+## Instalación
 
 ```bash
 # 1. Crear entorno virtual
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 
 ---
 
-## 📦 Dataset
+## Dataset
 
 1. Solicita acceso en: http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html
 2. Descarga el **Category and Attribute Prediction Benchmark**
@@ -55,7 +55,7 @@ data/raw/
 
 ---
 
-## 🏋️ Entrenamiento
+## Entrenamiento
 
 ```bash
 # Desde la raíz del proyecto
@@ -76,7 +76,7 @@ tensorboard --logdir logs/
 
 ---
 
-## 📊 Evaluación
+## Evaluación
 
 ```bash
 python src/evaluate.py
@@ -100,7 +100,7 @@ python src/predict.py --folder path/carpeta/
 
 ---
 
-## 🏗️ Modelo
+## Modelo
 
 ```python
 ResNet50 (pretrained ImageNet)
@@ -114,7 +114,7 @@ ResNet50 (pretrained ImageNet)
 
 ---
 
-## 📋 Checklist
+## Checklist
 
 - [ ] Descargar DeepFashion y colocar en `data/raw/`
 - [ ] `pip install -r requirements.txt`
