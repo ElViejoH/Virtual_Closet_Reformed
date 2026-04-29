@@ -9,6 +9,7 @@ Uso:
 import os
 import sys
 import argparse
+from pathlib import Path
 import yaml
 import torch
 from torchvision import transforms
@@ -27,23 +28,32 @@ INFERENCE_TF = transforms.Compose([
 ])
 
 
-def load_config(path='../config.yaml'):
-    with open(path) as f:
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+def project_path(path: str) -> Path:
+    path = Path(path)
+    return path if path.is_absolute() else PROJECT_ROOT / path
+
+
+def load_config(path='config.yaml'):
+    with open(project_path(path), encoding='utf-8') as f:
         return yaml.safe_load(f)
 
 
-def load_category_names(data_root: str):
+def load_category_names(data_root: str, annotation_dir: str = 'Anno_coarse'):
     """Carga los nombres de categorías desde DeepFashion."""
     import pandas as pd
-    cloth_path = os.path.join(data_root, 'Anno', 'list_category_cloth.txt')
-    df = pd.read_csv(cloth_path, skiprows=1, sep=r'\s+',
+    cloth_path = os.path.join(data_root, annotation_dir, 'list_category_cloth.txt')
+    df = pd.read_csv(cloth_path, skiprows=2, sep=r'\s+',
                      names=['category_name', 'category_type'])
     return df['category_name'].tolist()
 
 
 def load_model(cfg):
     model = build_M2_finetuned(cfg['num_classes'], freeze_phase=False)
-    ckpt  = torch.load('../checkpoints/phase2_best.pth', map_location=DEVICE)
+    checkpoint_dir = project_path(cfg.get('checkpoint_dir', 'checkpoints/'))
+    ckpt  = torch.load(checkpoint_dir / 'phase2_best.pth', map_location=DEVICE)
     model.load_state_dict(ckpt['model_state_dict'])
     model.eval().to(DEVICE)
     return model
@@ -82,7 +92,7 @@ def predict_folder(model, folder_path: str, category_names: list):
         fpath = os.path.join(folder_path, fname)
         results = predict_image(model, fpath, category_names, top_k=3)
         top_name, top_prob = results[0]
-        print(f"  {fname:40s} → {top_name} ({top_prob:.2%})")
+        print(f"  {fname:40s} -> {top_name} ({top_prob:.2%})")
 
 
 def main():
@@ -94,7 +104,10 @@ def main():
     args = parser.parse_args()
 
     cfg = load_config()
-    category_names = load_category_names(cfg['data_root'])
+    category_names = load_category_names(
+        str(project_path(cfg['data_root'])),
+        cfg.get('annotation_dir', 'Anno_coarse')
+    )
     model = load_model(cfg)
 
     if args.image:
@@ -102,7 +115,7 @@ def main():
         print("-" * 50)
         results = predict_image(model, args.image, category_names, top_k=args.topk)
         for rank, (name, prob) in enumerate(results, 1):
-            bar = '█' * int(prob * 30)
+            bar = '#' * int(prob * 30)
             print(f"  #{rank}  {name:30s}  {bar:<30s}  {prob:.2%}")
 
     elif args.folder:

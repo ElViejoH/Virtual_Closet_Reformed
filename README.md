@@ -35,6 +35,31 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+### GPU en Windows
+
+Este proyecto ya fue probado con una **NVIDIA GeForce RTX 4060** usando
+PyTorch con CUDA en `.venv`.
+
+```powershell
+# Activar el entorno local del proyecto
+.\.venv\Scripts\activate
+
+# Verificar que PyTorch ve la GPU
+python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
+
+# Entrenar
+python src\train.py
+```
+
+Si necesitas reconstruir el entorno desde cero:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
 ---
 
 ## Dataset
@@ -46,7 +71,7 @@ pip install -r requirements.txt
 ```
 data/raw/
 ├── img/
-├── Anno/
+├── Anno_coarse/
 │   ├── list_category_img.txt
 │   └── list_category_cloth.txt
 └── Eval/

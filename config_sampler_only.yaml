@@ -1,30 +1,25 @@
 # ─── Configuración general del proyecto ──────────────────────────────────────
 
-# Ruta al dataset DeepFashion descargado
 data_root: "data/raw"
-
-# Esta descarga usa Anno_coarse en vez de Anno
 annotation_dir: "Anno_coarse"
-
-# Número de categorías en DeepFashion Category Benchmark
 num_classes: 50
 
 # ─── DataLoader ───────────────────────────────────────────────────────────────
 batch_size: 64
-num_workers: 2        # Usa RAM/CPU para alimentar la GPU; baja a 0 si Windows da problemas
+num_workers: 2
 
 # ─── Rebalanceo de clases ────────────────────────────────────────────────────
-use_weighted_sampler: false
+use_weighted_sampler: true
 use_class_weights: false
 
-# ─── Fase 1: Solo clasificador (backbone congelado) ───────────────────────────
+# ─── Fase 1: Solo clasificador (backbone congelado) ──────────────────────────
 phase1_epochs: 5
-phase1_lr: 0.001      # Adam
+phase1_lr: 0.001
 
 # ─── Fase 2: Fine-tuning de layer3, layer4 y fc ──────────────────────────────
 phase2_epochs: 20
-phase2_lr: 0.0001     # SGD con momentum
+phase2_lr: 0.0001
 
 # ─── Checkpoints y logs ───────────────────────────────────────────────────────
-checkpoint_dir: "checkpoints/"
-log_dir: "logs/"
+checkpoint_dir: "checkpoints_sampler_only/"
+log_dir: "logs_sampler_only/"

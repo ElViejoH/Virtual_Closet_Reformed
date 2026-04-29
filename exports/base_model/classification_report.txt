@@ -1,0 +1,58 @@
+Top-1: 0.6443 | Top-5: 0.9168
+
+              precision    recall  f1-score   support
+
+      Anorak       0.00      0.00      0.00        23
+      Blazer       0.54      0.52      0.53      1047
+      Blouse       0.54      0.54      0.54      3416
+      Bomber       0.00      0.00      0.00        39
+ Button-Down       0.43      0.07      0.11        46
+    Cardigan       0.53      0.47      0.49      1877
+     Flannel       0.37      0.14      0.20        51
+      Halter       0.00      0.00      0.00         2
+      Henley       0.50      0.07      0.12       106
+      Hoodie       0.65      0.33      0.44       597
+      Jacket       0.54      0.49      0.52      1446
+      Jersey       0.00      0.00      0.00       106
+       Parka       0.85      0.25      0.39        87
+     Peacoat       0.00      0.00      0.00        17
+      Poncho       0.36      0.11      0.17       106
+     Sweater       0.49      0.54      0.52      1784
+        Tank       0.59      0.57      0.58      2128
+         Tee       0.61      0.73      0.66      5091
+         Top       0.38      0.02      0.04      1411
+  Turtleneck       0.00      0.00      0.00        29
+      Capris       0.00      0.00      0.00         9
+      Chinos       0.43      0.08      0.14        73
+    Culottes       0.00      0.00      0.00        71
+     Cutoffs       0.54      0.06      0.11       243
+     Gauchos       0.00      0.00      0.00         8
+       Jeans       0.63      0.77      0.69       985
+    Jeggings       1.00      0.02      0.03        64
+    Jodhpurs       0.00      0.00      0.00         8
+     Joggers       0.46      0.41      0.43       575
+    Leggings       0.68      0.74      0.71       724
+      Sarong       0.00      0.00      0.00         6
+      Shorts       0.65      0.73      0.69      2771
+       Skirt       0.63      0.70      0.66      1933
+  Sweatpants       0.52      0.36      0.42       408
+ Sweatshorts       0.75      0.04      0.07       160
+      Trunks       0.60      0.15      0.24        41
+      Caftan       0.00      0.00      0.00         9
+        Cape       0.00      0.00      0.00         0
+        Coat       0.49      0.45      0.47       304
+     Coverup       0.00      0.00      0.00         1
+       Dress       0.78      0.94      0.85      9968
+    Jumpsuit       0.71      0.55      0.62       849
+      Kaftan       0.00      0.00      0.00        17
+      Kimono       0.47      0.24      0.32       338
+  Nightdress       0.00      0.00      0.00         0
+      Onesie       0.00      0.00      0.00        11
+        Robe       0.00      0.00      0.00        21
+      Romper       0.62      0.49      0.55       994
+  Shirtdress       0.00      0.00      0.00         0
+    Sundress       0.00      0.00      0.00         0
+
+    accuracy                           0.64     40000
+   macro avg       0.35      0.23      0.25     40000
+weighted avg       0.62      0.64      0.62     40000

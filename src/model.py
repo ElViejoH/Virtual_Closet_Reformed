@@ -9,8 +9,8 @@ def build_M2_finetuned(num_classes, freeze_phase=False):
     Args:
         num_classes (int): Número de categorías (50 para DeepFashion).
         freeze_phase (bool):
-            True  → Fase 1: congela todo excepto fc (solo entrena clasificador).
-            False → Fase 2: descongela layer3, layer4 y fc.
+            True  -> Fase 1: congela todo excepto fc (solo entrena clasificador).
+            False -> Fase 2: descongela layer3, layer4 y fc.
 
     Returns:
         nn.Module: Modelo listo para entrenamiento.
